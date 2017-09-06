@@ -20,9 +20,11 @@
 
 import string
 import operator
-
+# string for scrubbing, splitting, etc.
+# operator for dictionary sorting
 def word_count(file_path):
     ct_dict= {}
+    # Empty dictionary to hold words/count pairs
     stop_words = ['a', 'the', 'is', 'i', 'an', 'is', 'me', 'my', 'he', 'his', 'her',
                   'they', 'them', 'their', 'we', 'our', 'us', 'to', 'from', 'and',
                   'but', 'was', 'be', 'in', 'on', 'have', 'it', 'that', 'she', 'with', 'do',
@@ -38,17 +40,22 @@ def word_count(file_path):
                   'family', 'came', 'left', 'right', 'too', 'though', 'look', 'hear', 'everything', 'little', 'big',
                   'thought', 'over', 'quite', 'looked', 'wanted', 'something', 'let', 'two', 'against', 'seemed',
                   'being', 'work', ]
+    # Initial list of common words to exclude from search; migrate to separate text file later & create separate fnctn
     file = open(file_path, 'r')
+    # New variable containing string from text file
     for line in file:
         scrub_list = line.replace(',', '').replace('(', '').replace(')', '').replace('\'', '').replace('.', '').replace(
             ';', '').replace('!', '').replace('"', '').replace('?', '').replace(':', '').replace('-', '').lower().split()
+    # Scrubs punctuation, converting to lower-case
         for word in scrub_list:
             if word not in stop_words:
                     if word in ct_dict:
                         ct_dict[word] += 1
                     else:
                         ct_dict[word] = 1
+    # Adds all words NOT in common words list to dictionary iteratively
     sort_ct_dict = sorted(ct_dict.items(), key=operator.itemgetter(1),  reverse=True)
+    #  Sorts pairs by value and reverses order
     print("Here are the ten most common * unique * words in your book:\n")
     print("1.\t'{}', {} times".format(sort_ct_dict[0][0], sort_ct_dict[0][1]))
     print("2.\t'{}', {} times".format(sort_ct_dict[1][0], sort_ct_dict[1][1]))
