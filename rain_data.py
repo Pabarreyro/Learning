@@ -51,11 +51,40 @@ def day_tuples(rows):
 
 
 def rainy_day(day_entries):
+    # Identifies the highest rainfall value in the namedtuple for day; converts to inches; reformats date for output
     rainiest = max(day_entries, key=itemgetter(1))
-    inchiest = str(rainiest.rainfall / 100)
+    inchiest = str(rainiest.rainfall / 100)  # Syntax note: .rainfall/.date to access namedtuple
     date = rainiest.date
     datiest = date.split('-')
-    print('{} {}, {}, saw the most rain, with {} inches.'.format(datiest[1], datiest[0], datiest[2], inchiest))
+    print('{} {}, {}, saw the most rain with {} inches.'.format(datiest[1], datiest[0], datiest[2], inchiest))
+    # NEXT: to reformat date
+
+def year_key(day_entry):
+    return day_entry.date[-4:]
+
+
+def group_years(day_entries):
+    # Creates a key variable from the year in namedtuple[date]
+    year_dict = {}  # Create an empty dictionary
+    for item in day_entries:
+        year = year_key(item)  # Set the variable to an actual key in the dictionary
+        if year not in year_dict:  # Populate dictionary the dictionary
+            year_dict[year] = []
+        year_dict[year].append(item[1])  # We just need rainfall values
+    return year_dict
+
+def sum_totals(year_dict):
+    # Sums rainfall values in namedtuples nested in the dictionary
+    for year in year_dict:
+        year_dict[year] = sum(year_dict[year])  # Replaces list of daily totals with the sum of daily totals
+    return year_dict
+
+
+def rainy_year(year_dict):
+    # Identifies the highest rainfall value in the dictionary of rainy years; converts to inches; reformats for output
+    rainiest = max(year_dict.items(), key=itemgetter(1))
+    inchiest = str(rainiest[1] / 100)
+    print('{} saw the most rain with {} inches.'.format(rainiest[0], inchiest))
 
 
 def test_run(file_path):
@@ -66,22 +95,11 @@ def test_run(file_path):
     final_totals = remove_nondata(init_totals)  # Check
     day_entries = day_tuples(final_totals)  # Check
     rainiest_day = rainy_day(day_entries)  # Check
+    year_dict = group_years(day_entries)  # Check
+    totals_dict = sum_totals(year_dict)
+    rainiest_year = rainy_year(totals_dict)
 
 test_run('sample_rain.txt')
 
+# NEXT: Run search function for days, yours; run averages; scrape website for data
 
-
-
-# def rain_records(file_path):
-#     # This function will run all of the functions preceding it
-#     text_lines = open_file(file_path) #Check
-#     table_text_lines = slice_text(text_lines) #Check
-#     rows_of_data = split_daily_total(table_text_lines)
-#     rows_of_complete_data = cut_non_valid_data(rows_of_data)
-#     day_entries = convert_rows_to_day_entries(rows_of_complete_data)
-#     day_with_most_rain = get_day_with_most_rain(day_entries)
-#     output_day_with_most_rain(day_with_most_rain)
-#     year_to_day_entries = group_by_year(day_entries)
-#     yearly_entries = convert_from_year_to_day_entries_to_year_entries(year_to_day_entries)
-#     year_with_most_rain = get_year_with_most_rain(yearly_entries)
-#     output_year_with_most_rain(year_with_most_rain)
