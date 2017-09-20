@@ -20,3 +20,5 @@ class Movie:  # We will access this by importing the file and passing media.Movi
 
     def play_trailer(self):
         webbrowser.open(self.trailer)  # Opens browser and opens trailer url
+
+
