@@ -1,0 +1,21 @@
+
+name:Pablo+Barreyro
+
+email=pabarreyro%40gmail.com
+
+issue=Your+stinky+balls
+
+notes=It%27s+annoying.++++++++++++++++
+
+color=%232c6e17
+
+
+# Will arrive as a dictionary of names : values
+d = {'name' : 'Gladys',
+     'email : 'vontrapp%40pdx.edu',
+     'issue': 'Sewage',
+     'notes': 'Once+upon+I+was+falling+in+love%2C+not+I%27m+only+falling+apart.+Nothing+I+can+do%2C+a+total+eclipse+of+the+heart.',
+     'color': '%23165e32'
+     'helpful' : 'No'
+    }
+

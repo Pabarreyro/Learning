@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <link rel="stylesheet" href="sample_style.css">
+
+</head>
+<body>
+<div class="container">
+<article id ="formID">
+    <div>
+        <form action="thanks.html">
+            <fieldset class="grayBorder">
+                <legend>Personal Information</legend>
+                <label for="formName">Name:</label>
+                <input type="text" name="name" id="formName">
+                <br>
+                <label for="formEmail">Email:</label>
+                <input type="text" name="email" id="formEmail">
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Troubleshoot Request</legend>
+                <label for="formIssue">State your issue:</label>
+                <input type="text" name="issue" id="formissue">
+                <br>
+                <label for="formNotes">Any additional information:</label>
+                <br>
+                <textarea name="notes" id="formNotes" cols="37" rows="10"></textarea>
+                <!--<text type="text" name="notes" id=formNotes">-->
+            </fieldset>
+            <br>
+            <fieldset class="purpleText">
+                <legend>Describe your mood:</legend>
+                <label for="formColor">What color represents your current mood?</label><br>
+                <input type="color" name="color" id="formColor"><br><br>
+                <label>Which words describe your mood?</label><br>
+                <label for="formFrustrated"><input type="checkbox" name="frustrated" id="formFrustrated" value="frustrated">Frustrated</label><br>
+                <label for="formMad"><input type="checkbox" name="frustrated" id="formMad" value="mad">Mad</label><br>
+                <label for="formOutraged"><input type="checkbox" name="outraged" id="formOutraged" value="outraged">Outraged</label><br>
+                <label for="formSassy"><input type="checkbox" name="sassy" id="formSassy" value="sassy">Sassy</label><br><br>
+                <label>Was this helpful?</label><br>
+                <label for="formHelpfulYes"><input type="radio" name="helpful" id="formHelpfulYes" value="Yes">Yes</label>
+                <label for="formHelpfulNo"><input type="radio" name="helpful" id="formHelpfulNo" value="No">No</label>
+            </fieldset>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+</article>
+</div>
+</body>
+</html>

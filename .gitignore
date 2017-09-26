@@ -1,7 +1,2 @@
 .idea/
 __pycache__/
-bool_game.py
-connect_four.py
-common_words.txt
-sample_rain.py
-sample_rain2.py

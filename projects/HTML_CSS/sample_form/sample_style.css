@@ -1,0 +1,41 @@
+body {
+    background-color: snow;
+
+}
+
+/*Making a container class that will bound the whole page*/
+.container {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Making a unique ID*/
+#formID  {
+    color: navy;
+}
+
+/*Making a unique class*/
+.grayBorder {
+    border: darkslategray dotted;
+}
+
+.purpleText {
+    color: purple;
+}
+
+.blockCenter {
+    width: 200px;
+    margin: auto
+}
+
+fieldset.purpleText {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+
+}

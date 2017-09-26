@@ -1,0 +1,71 @@
+<!--* A text box for single line description of what they ate dinner-->
+<!--* A selection of checkboxes for "meat", "potatoes", "broccoli", "cheese" and have them select if any of them were eaten-->
+<!--* A radio button where they can select if they were vegetarian or non-->
+<!--* A drop-down menu of ice cream flavors and have them select their favorite-->
+<!--* A free-form text field where they can talk about their most memorable dinner ever-->
+<!--* A button to press if they're hungry; it should not submit-->
+<!--* A button to submit-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dinner Dish</title>
+    <style>
+        label {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<article>
+    <div>
+        <form action="https://example.com/login" method="Post">
+            <fieldset>
+                <legend>Give us the Dish!</legend>
+                <label for="dishDescription">Describe your meal for us<input type="text" name="dishdescription" id="dishDescription"></label><br><br>
+                <label>Were any of the following ingredients in it? <i>(Check all that apply)</i></label><br>
+                <label for="dishMeat">Meat<input type="checkbox" name="ingredients" id="dishMeat" value="meat"></label>
+                <label for="dishPotato">Potatoes<input type="checkbox" name="ingredients" id="dishPotato" value="potato"></label>
+                <label for="dishBroccoli">Broccoli<input type="checkbox" name="ingredients" id="dishBroccoli" value="broccoli"></label>
+                <label for="dishCheese">Cheese<input type="checkbox" name="ingredients" id="dishCheese" value="cheese"></label>
+            </fieldset><br>
+
+            <fieldset>
+                <legend>Tell us about yourself</legend>
+                <label>Are you a vegetarian?</label><br>
+                <label for="meatYes">No<input type="radio" name="eatsmeat" id="meatYes" checked></label>
+                <label for="meatNo">Yes<input type="radio" name="eatsmeat" id="meatNo"></label><br><br>
+                <label>What's your favorite ice-cream flavor?</label><br>
+                <select name="icecreamflave" id="icecreamSelection">
+                    <option value="Vanilla">Vanilla</option>
+                    <option value="Chocolate">Chocolate</option>
+                    <option value="Cookies N' Cream">Cookies N' Cream</option>
+                    <option value="Mint Chocolate Chip">Mint Chocolate Chip</option>
+                    <option value="Cookie Dough">Cookie Dough</option>
+                    <option value="Strawberry">Strawberry</option>
+                    <option value="Butter Pecan">Buter Pecan</option>
+                    <option value="Neopolitan">Neopolitan</option>
+                    <option value="Cherry">Cherry</option>
+                    <option value="Coffee">Coffee</option>
+                    <option value="Pistachio">Pistachio</option>
+                    <option value="Rocky Road">Rocky Road</option>
+                    <option value="Moose Tracks">Moose Tracks</option>
+                    <option value="Caramel">Caramel</option>
+                    <option value="Double Fudge Brownie">Double Fudge Brownie</option>
+                    <option value="Peanut Butter Chocolate">Peanut Butter Chocolate</option>
+                </select><br>
+                <label for="icecreamInput">Don't see your flavor? Tell us!<input type="text" name="icecreamflave" id="icecreamInput"></label><br><br>
+                <label>Tell us about your best meal ever:</label><br>
+                <textarea name="bestdish" id="dishBest" cols="50" rows="10"></textarea><br><br>
+                <label>Share a photo of your favorite pair of chopsticks!</label>
+                <label for="picChopsticks">Your image:<input type="file" name="picchopsticks" id="picChopsticks"></label><br>
+                <button type="button">I'm Hungry!</button>
+            </fieldset><br>
+            <input type="Submit" value="Submit">
+        </form>
+    </div>
+</article>
+</body>
+</html>

@@ -1,0 +1,77 @@
+section {
+            border: solid 2px;
+            margin: 3px;
+            display: flex;
+        }
+div {
+  width: 100px;
+  height: 100px;
+  border: dashed 2px;
+  margin: 10px;
+}
+section section {
+  border: dashed 2px;
+}
+
+.firstsection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.secondsection {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.thirdsection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+section.thirdsection :nth-child(2) {
+  flex-grow: 2;
+}
+
+.fourthsection {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.fifthsection {
+  display: flex;
+  flex-flow: wrap;
+}
+
+section.fifthsection div:first-child {
+    order:15
+}
+
+.sixthsection {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+section.sixthsection :first-child {
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+section.sixthsection :last-child {
+  flex-direction: row-reverse;
+  justify-contents: flex-end;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.seventhsection {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-flow: wrap-reverse;
+  justify-content: center;
+
+}
