@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Varela+Round');
 
+header {
+	display: block;
+	background-color: #3e3e3e;
+	width: auto;
+	height: 100px;
+
+}
 body {
 /* 	font-family: 'Varela Round', sans-serif; */
 	font-family: 'Montserrat', sans-serif;
@@ -17,18 +24,26 @@ aside {
 	margin: 10% 0;
 }
 
-main h1 {`
-/* 	color: #3DDC97; */
-}
+/*main h1 {*/
+ 	/*color: #3DDC97;*/
+/*}*/
 
 main > div {
 	height: 40em;
 	width: 40em;
 	background: url(https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/21768260_10100113153532363_5303716264737073317_n.jpg?oh=33c8b809d9206dee4ad0c885b3cc8dfc&oe=5A4FD3C7) center no-repeat;
 	background-size: cover;
+	background-color: rgba(234, 234, 234, 0.61);
+	background-blend-mode: luminosity;
 	border-radius: 50%;
 	position: relative;
 	box-shadow: inset 0px 0pt 0pt 18px rgba(234, 234, 234, 0.61);
+}
+
+.logo :before {
+    position: absolute;
+    top: -50px;
+    transform: translateX(100%);
 }
 
 main {
