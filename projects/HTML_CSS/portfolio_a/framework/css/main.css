@@ -1,10 +1,5 @@
 * {margin: 0; padding: 0;}
 
-body {
-	<!-- src: http://subtlepatterns.com/?p=1045 -->
-	background: url('dark_geometric.png');
-}
-
 #container {
 	width: 1000px;
 	overflow: hidden;
@@ -148,8 +143,6 @@ div.row {
     display: flex;
     justify-content: flex-end;
 }
-
-div.row col-
 
 .row {
     width: 100%;
