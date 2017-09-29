@@ -10,7 +10,7 @@ def read_text(file):
     check_profanity(text)
     doc.close()  # Don't forget to close the document...
 
-read_text('movie_quotes.txt')
+read_text('kafka.txt')
 
 
 def check_profanity(text):
@@ -26,6 +26,7 @@ def check_profanity(text):
         print("This document has no curse words!")
     else:
         print("Could not scan the document properly.")
+
 
 
 # In the background...
