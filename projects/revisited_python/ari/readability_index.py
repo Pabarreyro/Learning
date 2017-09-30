@@ -1,4 +1,5 @@
 # Note: formula is 4.71 (characters/words) + .5 (words/sentence)-21.43
+import string
 
 ari_scale = {
          1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
@@ -21,10 +22,10 @@ punct_list = [".", "!", "?", ",", ";", ":", "'", "-", '"']
 
 file_dict = {
       "1": "on_trade_disputes_bill",
-      "2": "blood_toil_tears_sweat.txt",
-      "3": "finest_hour.txt",
-      "4": "sinews_of_peace.txt",
-      "5" : "never_despair.txt"}
+      "2": "blood_toil_tears_sweat",
+      "3": "finest_hour",
+      "4": "sinews_of_peace",
+      "5" : "never_despair"}
 
 def menu():
     running = 0
@@ -76,11 +77,11 @@ def remove_punct(file):  # Could use .isalpha instead?
       punct_list = [",", ";", ":", "'", "-", '"']
       for punct in punct_list:
         clean_file = file.replace(punct, "")
-        clean_file = file.replace("\n", " ")
+        clean_file = file.replace("\n", "")
         return clean_file
 
 def split_sentences(clean_file):
-      punct_list = [".", "!", "?",]
+      punct_list = [".", "!", "?"]
       for punct in punct_list:
         sentences = clean_file.split(punct)
         return sentences
@@ -95,22 +96,23 @@ def split_words(sentences):
 def word_count(word_list):
     word_count_list = []
     for line in word_list:
-          word_count_list = word_count_list.append(len(line))
+        if '' in line:
+            line.remove('')
+        word_count_list.append(len(line))
     return word_count_list
 
-def chars_in_words(split_words):
-    char_in_words_list = []
-    for line in split_words:
+def word_length(word_list):
+    word_length_list = []
+    for line in word_list:
         for i in line:
-            #print(len(i))
-            char_in_words_list.append(len(i))
-    return char_in_words_list
+            word_length_list.append(len(i))
+    return word_length_list
 
-def sum_of_characters(char_in_words_list):
-    sum_of_chars = 0
-    for i in char_in_words_list:
-        sum_of_chars += int(i)
-    return sum_of_chars
+def sum_length(word_list):
+    characters = 0
+    for i in word_list:
+        characters += int(i)
+    return character
 
 def ari_scale_calc(ari_scale, formula):
     print("This text has an ARI rating of {}. ".format(str(formula)))
@@ -127,34 +129,16 @@ def remove_space(split_words):
 
 
 def test():
-      menu_action = menu()
-      file = import_file(menu_action)
-      clean_file = remove_punct(file)
-      sentences = split_sentences(clean_file)
-      word_list = split_words(sentences)
+      menu_action = menu()  # Check
+      file = import_file(menu_action)  # Check
+      clean_file = remove_punct(file)  # Check
+      sentences = split_sentences(clean_file)  # Check
+      word_list = split_words(sentences)  # Check
+      word_count_list = word_count(word_list)  # Check
+      word_length_list = word_length(word_list)
       print(word_list)
+      print(word_count_list)
+      print(word_length_list)
+
 
 print(test())
-
-
-# file = import_text(selection)
-#     file = remove_unnecessary_punct(file, punct_list)
-#
-#     split_file = split_sentance(file, punct_list)
-#     split_words = split_words(split_file)
-#     split_words = remove_space(split_words)
-#
-#     char_in_words_list = chars_in_words(split_words)
-#
-#     sum_of_chars = sum_of_characters(char_in_words_list)
-#     sum_of_words = len(char_in_words_list)
-#     sum_of_sent = len(split_words)
-#
-#     formula = ((4.71 * (sum_of_chars/sum_of_words) + (0.5 * (sum_of_words/sum_of_sent)) - 21.43))
-#
-#     if formula - round(formula, 0) > 0:
-#         formula = round(formula, 0) + 1
-#
-#     print(formula)
-#     print("")
-#     ari_scale_calc(ari_scale, int(formula))
