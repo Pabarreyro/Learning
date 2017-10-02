@@ -120,12 +120,7 @@ def ari_scale_calc(ari_scale, formula):
     print("This corresponds to a {} reading level; appropriate for {} year-olds.".format(ari_scale[formula]["grade_level"], ari_scale[formula]["ages"]))
     print("")
 
-def remove_space(split_words):
-    for line in split_words:
-        for i in line:
-            if i == "":
-                line.remove(i)
-    return split_words
+
 
 
 def test():
@@ -135,7 +130,7 @@ def test():
       sentences = split_sentences(clean_file)  # Check
       word_list = split_words(sentences)  # Check
       word_count_list = word_count(word_list)  # Check
-      word_length_list = word_length(word_list)
+      word_length_list = word_length(word_list)  # Check
       print(word_list)
       print(word_count_list)
       print(word_length_list)
