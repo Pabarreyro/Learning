@@ -15,7 +15,18 @@
 
         <script type="text/javascript">
 
-        /* javascript goes here */
+            while (input !== '') {
+                var input = prompt('Enter a character below:');
+                if (['a', 'e', 'i', 'o', 'u'].indexOf(input.toLowerCase()) !== -1) {
+                    alert('The letter ' + input + ' is a vowel.');
+                    }
+                else if (input === 'y') {
+                    alert('The letter ' + input + ' can be regarded as both vowel and consonant.');
+                    }
+                else {
+                    alert ('Not a vowel, try again.')
+                }
+            }
 
         </script>
     </body>
