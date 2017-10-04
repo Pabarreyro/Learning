@@ -1,54 +1,211 @@
-h1, p {
-    text-align: center;
+body {
+    background: #292932;
+    font-family: Arial, Helvetica, sans-serif;
+    color: SlateGray;
 }
 
 .container {
-    display: table;
-    width: 100%;
-    height: 100px;
+  border: 1px dashed transparent;
+  position:relative;
+  height: 700px;
+  width: auto;
 }
 
-.game-controls{
-    width: 10%;
+.gameTitle {
+  position:relative;
+  border: 1px dotted transparent;
+  height: 60px;
+  width:400px;
+  font-size: 60px;
+  text-align: center;
+  margin: 30px auto 15px auto;
 }
 
-.game-grid {
-    text-align: center;
-    width: 80%;
+.message {
+  position:relative;
+  border: 1px dotted transparent;
+  height: 60px;
+  width:400px;
+  font-size: 22px;
+  text-align: center;
+  margin: 30px auto 5px auto;
 }
 
-.game-score {
-    text-align: right;
-    width: 10%;
+.game-board {
+  position:relative;
+  height: 428px;
+  width:418px;
+  background-color: rgba(140, 187, 86, 0.81);
+  margin: 20px auto 0 auto;
+  border-radius: 5%;
 }
 
-.game-cell {
-    display: table-cell;
+.hole {
+  position: absolute;
+  content: url('hole.jpg');
+  border: 1px dotted transparent;
+  height: 84px;
+  width: 103px;
+  border-radius: 10%;
+  font-size: 150px;
+  text-align: center;
+  line-height: .88em;
+  cursor: pointer;
 }
 
-.timer-label {
-    font-size: 40px;
+.grid-line {
+  position: absolute;
+  background-color: DimGray;
 }
 
-.score-label {
-    margin-top: 30px;
-    font-size:40px;
+.vert-line {
+  height: 418px;
+  width: 2px;
+}
+.horz-line {
+  width: 408px;
+  height: 2px;
 }
 
-#timer, #score {
-    font-size: 40px;
-    font-weight: bold;
+#first-vert {
+  top: 5px;
+  left: 25%;
+}
+#second-vert {
+  top: 5px;
+  left:50%;
+}
+#third-vert {
+  top: 5px;
+  left:75%;
 }
 
-table {
-    border-collapse: collapse;
-    margin: 20px auto;
+#first-horz {
+  top: 20%;
+  left: 5px;
+}
+#second-horz {
+  top: 40%;
+  left:5px;
+}
+#third-horz {
+  top: 60%;
+  left: 5px;
+}
+#fourth-horz {
+  top: 80%;
+  left:5px;
 }
 
-table td {
-    border: 1px solid black;
+#first-first {
+  left: 0;
+  top: 0;
+}
+#first-second {
+  left:25%;
+  top: 0;
+}
+#first-third {
+  left: 50%;
+  top: 0;
+}
+#first-fourth {
+  left: 75%;
+  top: 0;
 }
 
-.tile{
-    background-image: src("https://files.slack.com/files-pri/T0PQYS509-F7E1GDMPH/hole.jpg")
+#second-first {
+  left: 0;
+  top: 20%;
+}
+#second-second {
+  left:25%;
+  top: 20%;
+}
+#second-third {
+  left: 50%;
+  top: 20%;
+}
+#second-fourth {
+  left: 75%;
+  top: 20%;
+}
+
+#third-first {
+  left: 0;
+  top: 40%;
+}
+#third-second {
+  left:25%;
+  top: 40%;
+}
+#third-third {
+  left: 50%;
+  top: 40%;
+}
+#third-fourth {
+  left: 75%;
+  top: 40%;
+}
+
+#fourth-first {
+  left: 0;
+  top: 60%;
+}
+#fourth-second {
+  left:25%;
+  top: 60%;
+}
+#fourth-third {
+  left: 50%;
+  top: 60%;
+}
+#fourth-fourth {
+  left: 75%;
+  top: 60%;
+}
+
+#fifth-first {
+  left: 0;
+  top: 80%;
+}
+#fifth-second {
+  left:25%;
+  top: 80%;
+}
+#fifth-third {
+  left: 50%;
+  top: 80%;
+}
+#fifth-fourth {
+  left: 75%;
+  top: 80%;
+}
+
+
+.resetButton {
+  position:relative;
+  height: 40px;
+  width:135px;
+  background-color: DarkGreen;
+  border: 1px solid DarkGray;
+  border-radius: 15px;
+  font-size: 20px;
+  text-align: center;
+  margin: 0 auto 15px auto;
+  padding: 15px 0 0 0;
+  color: white;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.align-right {
+  text-align:right;
+}
+
+.align-left {
+  text-align:left;
 }

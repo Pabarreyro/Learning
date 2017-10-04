@@ -17,9 +17,46 @@ Keep score.
 * Every 10 seconds, increase the rate at which moles appear.
 */
 
-function Game () {
-    this.GridRows = 5;
-    this.GridColumns = 4;
-    this.
+var score = 0;
+var timer;
+var interval = 2000;
+var clicks = 0;
 
+function play() {
+    var holeArray = $('.hole');
+    if (holeArray.length >0) {
+        var random = Math.floor(Math.random() * holeArray.length);
+        console.log(random);
+        $(holeArray[random]).attr('src', 'mole.jg').removeClass('hole').addClass('mole');
+    } else {
+        clearInterval(timer);
+        alert('You Lose!');
+    }
 }
+
+$('start').click(function (){
+    timer = setInterval(play, interval);
+});
+
+$('.img').click(function () {
+
+    if ($(this).attr('src') === 'mole.jpg') {
+        $(this).attr('src', 'hole.jpg').removeClass('mole').addClass('hole');
+        score += 100;
+        if(clicks === 9) {
+            clicks = 0;
+            interval -= 500;
+            clearInterval(timer);
+            timer = setInterval(play, interval);
+        } else {
+            clicks++
+        }
+    } else {
+        score -= 50
+    }
+});
+
+$('div').on('dragstart', function() {
+    event.preventdefault();
+})
+

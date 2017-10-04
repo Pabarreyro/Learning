@@ -7,24 +7,53 @@
 
 </head>
 <body>
-    <h1>Welcome to Whack-A-Mole!</h1>
-    <h4>To Play:</h4>
-    <p>Click on the Mole before it disappears!</p>
-    <div class="container">
-        <div class="main">
-            <button id="start-game">
-                Start Game!
-            </button>
-        </div>
-        <div class="main-grid main-cell">
-            <div id="grid">
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-            </div>
-        </div>
+<div class="container">
+    <div class="game-board">
+
+        <!--top row of squares-->
+        <div class="hole" id="first-first" onclick="sqPlayed(1)"></div>
+        <div class="hole" id="first-second" onclick="sqPlayed(2)"></div>
+        <div class="hole" id="first-third" onclick="sqPlayed(3)"></div>
+        <div class="hole" id="first-fourth" onclick="sqPlayed(4)"></div>
+
+        <!--second row of squares-->
+        <div class="hole" id="second-first" onclick="sqPlayed(1)"></div>
+        <div class="hole" id="second-second" onclick="sqPlayed(2)"></div>
+        <div class="hole" id="second-third" onclick="sqPlayed(3)"></div>
+        <div class="hole" id="second-fourth" onclick="sqPlayed(4)"></div>
+
+        <!--third row of squares-->
+        <div class="hole" id="third-first" onclick="sqPlayed(1)"></div>
+        <div class="hole" id="third-second" onclick="sqPlayed(2)"></div>
+        <div class="hole" id="third-third" onclick="sqPlayed(3)"></div>
+        <div class="hole" id="third-fourth" onclick="sqPlayed(4)"></div>
+
+        <!--fourth row of squares-->
+        <div class="hole" id="fourth-first" onclick="sqPlayed(1)"></div>
+        <div class="hole" id="fourth-second" onclick="sqPlayed(2)"></div>
+        <div class="hole" id="fourth-third" onclick="sqPlayed(3)"></div>
+        <div class="hole" id="fourth-fourth" onclick="sqPlayed(4)"></div>
+
+        <!--bottom row of squares-->
+        <div class="hole" id="fifth-first" onclick="sqPlayed(1)"></div>
+        <div class="hole" id="fifth-second" onclick="sqPlayed(2)"></div>
+        <div class="hole" id="fifth-third" onclick="sqPlayed(3)"></div>
+        <div class="hole" id="fifth-fourth" onclick="sqPlayed(4)"></div>
+
+        <!--game grid lines-->
+        <div class="grid-line vert-line" id="first-vert"></div>
+        <div class="grid-line vert-line" id="second-vert"></div>
+        <div class="grid-line vert-line" id="third-vert"></div>
+        <div class="grid-line horz-line" id="first-horz"></div>
+        <div class="grid-line horz-line" id="second-horz"></div>
+        <div class="grid-line horz-line" id="third-horz"></div>
+        <div class="grid-line horz-line" id="fourth-horz"></div>
     </div>
+
+    <h2 class="message">Click on the Mole before it disappears!</h2>
+    <div class="resetButton">Play Again?</div>
+
+</div>
 <script src="site.js"></script>
 </body>
 </html>
