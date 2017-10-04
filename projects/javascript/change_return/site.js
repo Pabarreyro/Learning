@@ -12,23 +12,31 @@
 
 
 function transform(input) {
-    var coins = [25, 10, 5, 5, 1];
-    if (input === 0) {
-        printError('Enter a value');
-        focusInput();
-    } else {
-        if (input >= coins[0]) {
-            clearError();
-            left = (input - coins[0]);
-            return [coins[0]].concat(transform(left, coins));
+  if (input) {
+    clearError();
+    var change = [];
+    var values = [25, 10, 5, 1];
+    var runningTotal = 0;
+    runningTotal = parseInt(input);
+    console.log(runningTotal);
 
-            var result = input;
-            printResult(result);
-        } else {
-            coins.shift();
-            return transform(input, coins)
-        }
+    for (var i = 0; i < values.length;i++) {
+        change.push(Math.floor(runningTotal/values[i]));
+        runningTotal -= (change[i] * values[i]);
+        console.log(runningTotal);
     }
+
+    var result = change;
+
+    // ^^^^^^ HERE ^^^^^^
+    // when you've done the transform,
+    // print the result
+    printResult(result);
+  }
+  else {
+    printError('Enter a value');
+    focusInput();
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function (evt) {
