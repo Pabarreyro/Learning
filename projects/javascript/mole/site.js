@@ -27,7 +27,7 @@ function play() {
     if (holeArray.length >0) {
         var random = Math.floor(Math.random() * holeArray.length);
         console.log(random);
-        $(holeArray[random]).attr('src', 'mole.jg').removeClass('hole').addClass('mole');
+        $(holeArray[random]).attr('content', 'mole.jpg').removeClass('hole').addClass('mole');
     } else {
         clearInterval(timer);
         alert('You Lose!');
@@ -39,9 +39,8 @@ $('start').click(function (){
 });
 
 $('.img').click(function () {
-
-    if ($(this).attr('src') === 'mole.jpg') {
-        $(this).attr('src', 'hole.jpg').removeClass('mole').addClass('hole');
+    if ($(this).className() === 'mole') {
+        $(this).removeClass('mole').addClass('hole');
         score += 100;
         if(clicks === 9) {
             clicks = 0;
