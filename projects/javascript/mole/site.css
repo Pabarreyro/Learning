@@ -35,7 +35,8 @@ body {
   position:relative;
   height: 428px;
   width:418px;
-  background-color: rgba(140, 187, 86, 0.81);
+  /*background-color: rgba(140, 187, 86, 0.81);*/
+  background-color: transparent;
   margin: 20px auto 0 auto;
   border-radius: 5%;
 }
@@ -43,7 +44,8 @@ body {
 .hole {
   position: absolute;
   content: url('hole.jpg');
-  border: 1px dotted transparent;
+  /*border: 1px dotted transparent;*/
+  border: 1px solid dimgray;
   height: 84px;
   width: 103px;
   border-radius: 10%;
@@ -54,9 +56,10 @@ body {
 }
 
 .mole {
-    position: absolute;
+  position: absolute;
   content: url('mole.jpg');
-  border: 1px dotted transparent;
+  /*border: 1px dotted transparent;*/
+  border: 1px solid dimgray;
   height: 84px;
   width: 103px;
   border-radius: 10%;
@@ -196,7 +199,7 @@ body {
 }
 
 
-.resetButton {
+#resetButton {
   position:relative;
   height: 40px;
   width:135px;

@@ -24,21 +24,23 @@ var clicks = 0;
 
 function play() {
     var holeArray = $('.hole');
+    console.log(holeArray)
     if (holeArray.length >0) {
-        var random = Math.floor(Math.random() * holeArray.length);
+        var random = Math.floor(Math.random()* holeArray.length);
         console.log(random);
-        $(holeArray[random]).attr('content', 'mole.jpg').removeClass('hole').addClass('mole');
+        // $(holeArray[random]).attr('content', 'mole.jpg').removeClass('hole').addClass('mole');
+        $(holeArray[random]).removeClass('hole').addClass('mole');
     } else {
         clearInterval(timer);
         alert('You Lose!');
     }
 }
 
-$('start').click(function (){
+$('#resetButton').click(function (){
     timer = setInterval(play, interval);
 });
 
-$('.img').click(function () {
+$('div').click(function () {
     if ($(this).className() === 'mole') {
         $(this).removeClass('mole').addClass('hole');
         score += 100;
@@ -57,5 +59,7 @@ $('.img').click(function () {
 
 $('div').on('dragstart', function() {
     event.preventdefault();
-})
+;});
+
+play();
 
