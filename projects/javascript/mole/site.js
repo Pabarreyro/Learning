@@ -19,7 +19,7 @@ Keep score.
 
 var score = 0;
 var timer;
-var interval = 2000;
+var interval = 1000;
 var clicks = 0;
 
 function play() {
