@@ -40,8 +40,8 @@ $('#resetButton').click(function (){
     timer = setInterval(play, interval);
 });
 
-$('div').click(function () {
-    if ($(this).className() === 'mole') {
+$('div').click(function() {
+    if ($(this).className === 'mole') {
         $(this).removeClass('mole').addClass('hole');
         score += 100;
         if(clicks === 9) {
