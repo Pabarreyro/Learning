@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Station</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
+    <div id="container">
+        <h2 id="location">City</h2>
+        <div id="report">
+            <div>
+                <h3>Temperature</h3>
+                <div class="weather" id="temperature"></div>
+                <div class="mini-weather" id="min-temp"></div>
+                <div class="mini-weather" id="max-temp"></div>
+            </div>
+            <div>
+                <h3>Humidity</h3>
+                <div class="weather" id="humidity"></div>
+            </div>
+            <div>
+                <h3>Precipitation</h3>
+                <div class="weather" id="precipitation"></div>
+            </div>
+            <div>
+                <h3>Wind</h3>
+                <div class="weather" id="Wind"></div>
+            </div>
+        </div>
+    </div>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
