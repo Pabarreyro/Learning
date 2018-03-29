@@ -10,19 +10,44 @@ function convertOnes(number) {
 };
 
 function convertTens(number) {
-  var numberString = number.toString();
-  var tenDigit = parseInt(numberString[0]);
+  // var numberString = number.toString();
+  var tenDigit = parseInt(number[0]);
   return tensNumerals[tenDigit-1];
 };
 
 function convertHundreds(number) {
-  var numberString = number.toString();
-  var hundredDigit = parseInt(numberString[0]);
+  // var numberString = number.toString();
+  var hundredDigit = parseInt(number[0]);
   return hundredsNumerals[hundredDigit-1];
 }
 
 function convertThousands(number) {
-  var numberString = number.toString();
-  var thousandDigit = parseInt(numberString[0]);
+  // var numberString = number.toString();
+  var thousandDigit = parseInt(number[0]);
   return thousandsNumerals[thousandDigit-1];
+}
+
+function romanNumeral(number) {
+  var numberArray = number.toString().split("");
+  var outputArray = [];
+  reverseArray = numberArray.reverse();
+
+  if (reverseArray.length === 4) {
+    outputArray.push(convertOnes(reverseArray[0]), convertTens(reverseArray[1]), convertHundreds(reverseArray[2]), convertThousands(reverseArray[3]));
+  } else if (reverseArray.length === 3) {
+    outputArray.push(convertOnes(reverseArray[0]), convertTens(reverseArray[1]), convertHundreds(reverseArray[2]));
+  } else if (reverseArray.length === 2) {
+    outputArray.push(convertOnes(reverseArray[0]), convertTens(reverseArray[1]));
+  } else {
+    outputArray.push(convertOnes(reverseArray[0]));
+  }
+
+  var output = outputArray.reverse().join("");
+
+  return output
+  // for (var i = 0; i < reverseArray.length; i++) {
+  //
+  //   outputArray.push reserveArray[i]
+  // }
+
 }
