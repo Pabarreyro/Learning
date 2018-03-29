@@ -6,7 +6,7 @@
 
 Behavior | Input | Ouput
 ------------ | ------------- | -------------
-Convert all single digit numbers & 9 | 1-3,5-8,4 & 9 10 | I-III, V-VII, IV & IX
+Convert all single digit numbers| 1-3,5-8,4 & 9 10 | I-III, V-VII, IV & IX
 Convert all multiples of 10 to 90 | 40, 70, 90 | XL, LXX,  XC
 Convert all multiples of 100 to 900 | 400, 700, 900 | CD, DCC, CM
 Convert all multiples of 1000 to 3000 | 1000,2000,3000 | M, MM, MMM
