@@ -1,0 +1,12 @@
+#show-destination {
+  display: none;
+}
+
+.location-name {
+  cursor: pointer;
+  color: #0088cc;
+}
+
+.location:hover {
+  text-decoration: underline;
+}
