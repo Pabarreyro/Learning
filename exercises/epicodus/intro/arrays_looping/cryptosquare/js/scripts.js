@@ -33,6 +33,18 @@ function splitStringArray(array) {
   });
 };
 
-function pushLettersToOutput(array){
+function pushLettersToOutput(array) {
+  array.forEach(function(nestedArray) {
+    nestedArray.forEach(function(element) {
+      outputArray.push(element);
+    });
+  });
+};
 
+function cryptoSquare(string) {
+   let justLetters = removeNonLetters(string);
+   setGrid(justLetters);
+   splitString(justLetters);
+   splitStringArray(stringArray);
+   pushLettersToOutput()
 }
