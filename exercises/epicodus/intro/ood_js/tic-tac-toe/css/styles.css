@@ -1,0 +1,49 @@
+body {
+  background: url("https://previews.123rf.com/images/inides/inides1604/inides160400140/55366694-xoxo-hugs-and-kisses-bold-seamless-pattern-hand-drawn-trendy-hipster-black-and-white-xo-background-i.jpg") center repeat;
+  padding-top: 30px;
+}
+
+.container {
+  padding: 20vh 10vw;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(140,138,126, 0.95);
+  text-align: center;
+  border-radius: 5px;
+  height: 70vh;
+
+}
+
+.container .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  margin: 5px;
+}
+table{
+  margin: 10
+}
+
+td {
+border: 1px solid black;
+text-align: center;
+height: 50px;
+width: 50px;
+}
+td:first-of-type {
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+td:nth-of-type(2) {
+  border-top-color: transparent;
+}
+td:nth-of-type(3) {
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+tr:nth-of-type(3) td {
+  border-bottom-color: transparent;
+}
