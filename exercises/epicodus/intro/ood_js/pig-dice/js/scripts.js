@@ -1,11 +1,13 @@
 //business logic
-function Die(number){
-  this.value = number;
+function Die(){
+  this.value = Math.floor((Math.random() * 6) + 1);
 };
 
 function Turn() {
   this.runningTotal = [];
+  this.rollCount = 0;
   this.rollAgain = true;
+  this.sum = 0;
 };
 
 function Hand() {
@@ -16,52 +18,43 @@ function Game() {
   this.currentPlayer = Math.floor((Math.random() * 2) + 1);
 };
 
-Turn.prototype.playerRoll = function() {
-  var roll = 0;
+Turn.prototype.newRoll = function() {
+  var newRoll = new Die();
 
-  if (this.rollAgain === true) {
-    roll = Math.floor((Math.random() * 6) + 1);
-    var newRoll = new Die(roll);
-
-    if(newRoll.value !== 1){
+  if(newRoll.value !== 1){
     this.runningTotal.unshift(newRoll.value);
-    } else {
-      this.rollAgain = false;
-    }
+  } else {
+    this.rollAgain = false;
   }
 };
 
-Turn.prototype.compRoll = function() {
-  var roll = 0;
+// if (this.rollAgain === true) {
+//   this.lastRoll = Math.floor((Math.random() * 6) + 1);
+// }
+
+Turn.prototype.compRolls = function() {
   for (var i = 0; i < 2; i++) {
     if (this.rollAgain === true) {
-      roll = Math.floor((Math.random() * 6) + 1);
-      var newRoll = new Die(roll);
-      console.log(newRoll.value);
-      if(newRoll.value !== 1){
-      this.runningTotal.unshift(newRoll.value);
-      } else {
-        this.rollAgain = false;
-      }
+      this.newRoll();
     }
   }
 };
 
 Turn.prototype.sumArray = function() {
-  var sum = 0;
   this.runningTotal.forEach(function(element){
-    sum += element;
+    this.sum += element;
   });
-  return sum;
 };
 
 Turn.prototype.resetTurnStats = function () {
   this.runningTotal = [];
+  this.rollCount = 0;
   this.rollAgain = true;
+  this.sum = 0;
 };
 
-Hand.prototype.updateScore = function(number) {
-  this.total += number;
+Hand.prototype.updateScore = function(turn) {
+  this.total += turn.sum;
 };
 
 Hand.prototype.checkWin = function(){
@@ -78,12 +71,13 @@ Game.prototype.changePlayer = function() {
   } else {
     this.currentPlayer = 1;
   }
-}
+};
 
 
 
 //user logic
 function showHide(number){
+  //split this into show/hide functions
   $("#player-board-" + number + " button.roll").toggle();
   $("#player-board-"+ number + " button.hold").toggle();
 }
@@ -118,8 +112,7 @@ $(document).ready(function(){
         showHide("two");
 
       } else {
-        $("#player-board-one button.roll").hide();
-        $("#player-board-one button.hold").hide();
+        showHide("one");
 
         currentTurn2.compRoll();
         if (currentTurn2.rollAgain === true) {
