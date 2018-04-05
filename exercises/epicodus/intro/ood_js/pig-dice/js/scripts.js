@@ -20,10 +20,9 @@ function Game(mode) {
 };
 
 Turn.prototype.newRoll = function() {
-  var newRoll = new Die();
-
-  if(newRoll.value !== 1){
-    this.runningTotal.unshift(newRoll.value);
+  var tempRoll = new Die();
+  if(tempRoll.value !== 1){
+    this.runningTotal.unshift(tempRoll.value);
   } else {
     this.rollAgain = false;
   }
@@ -42,9 +41,14 @@ Turn.prototype.compRolls = function() {
 };
 
 Turn.prototype.sumArray = function() {
+  this.sum = 0;
+  var runningSum = 0;
+
   this.runningTotal.forEach(function(element){
-    this.sum += element;
+    runningSum += element;
   });
+
+  this.sum += runningSum;
 };
 
 Turn.prototype.resetTurnStats = function () {
@@ -81,7 +85,7 @@ function showHide(number){
   //split this into show/hide functions
   $("#player-board-" + number + " button.roll").toggle();
   $("#player-board-"+ number + " button.hold").toggle();
-}
+};
 
 $(document).ready(function(){
   $("#mode-selection button").click(function(){
@@ -98,28 +102,25 @@ $(document).ready(function(){
     var playerTwoHand = new Hand();
 
     var currentTurn1 = new Turn();
-    var runningTotal1 = currentTurn1.runningTotal;
-
     var currentTurn2 = new Turn();
-    var runningTotal2 = currentTurn2.runningTotal;
 
-    if (mode === "Single") {
+    if (newGame.mode === "Single") {
       if (newGame.currentPlayer === 1) {
         showHide("two");
-
       } else {
         showHide("one");
 
         currentTurn2.compRolls();
         if (currentTurn2.rollAgain === true) {
-          $("ul#player-two-rolls").append("<li>" + runningTotal2[0] + "</li>");
-          $("ul#player-two-rolls").append("<li>" + runningTotal2[1] + "</li>");
+          $("ul#player-two-rolls").append("<li>" + currentTurn2.runningTotal[0] + "</li>");
+          $("ul#player-two-rolls").append("<li>" + currentTurn2.runningTotal[1] + "</li>");
 
           currentTurn2.sumArray();
           $("#turn-score-two").text(currentTurn2.sum);
 
           playerTwoHand.updateScore(currentTurn2);
           $("#player2-score").text(playerTwoHand.total);
+
           showHide("two");
           showHide("one");
         } else {
@@ -127,51 +128,48 @@ $(document).ready(function(){
           showHide("two");
           showHide("one");
         }
-
         currentTurn2.resetTurnStats();
-        runningTotal2 = currentTurn2.runningTotal;
       }
 
       $("#player-board-one button.roll").click(function() {
         $("ul#player-two-rolls").empty();
-        currentTurn1.newRoll();
-        if (currentTurn1.rollAgain === true){
-          $("ul#player-one-rolls").append("<li>" + runningTotal1[0] + "</li>");
-          currentTurn1.sumArray();
-          $("#turn-score-one").text(currentTurn1.sum);
-        } else {
-          $("ul#player-one-rolls").append("<li>Bust!</li>");
-          $("#turn-score-one").text("Bust!");
-          showHide("two");
-          showHide("one");
-          $("ul#player-one-rolls").empty();
-          $("#turn-score-one").empty();
+        if(currentTurn1.rollAgain === true){
+          currentTurn1.newRoll();
+          if (currentTurn1.rollAgain === true){
+            $("ul#player-one-rolls").append("<li>" + currentTurn1.runningTotal[0] + "</li>");
 
-          currentTurn1.resetTurnStats();
-          runningTotal1 = currentTurn1.runningTotal;
-
-          currentTurn2.compRolls();
-          if (currentTurn2.rollAgain === true) {
-            $("ul#player-two-rolls").append("<li>" + runningTotal2[0] + "</li>");
-            $("ul#player-two-rolls").append("<li>" + runningTotal2[1] + "</li>");
-            currentTurn2.sumArray();
-
-            $("#turn-score-two").text(currentTurn2.sum);
-            playerTwoHand.updateScore(currentTurn2);
-            $("#player2-score").text(playerTwoHand.total);
-            showHide("two");
-            showHide("one");
-
+            currentTurn1.sumArray();
+            $("#turn-score-one").text(currentTurn1.sum);
           } else {
-            $("#turn-score-two").text(currentTurn2.sum);
+            $("ul#player-one-rolls").append("<li>Bust!</li>");
+            $("#turn-score-one").text("Bust!");
             showHide("two");
             showHide("one");
+            $("ul#player-one-rolls").empty();
+            $("#turn-score-one").empty();
 
-          }
+            currentTurn1.resetTurnStats();
 
-            currentTurn2.resetTurnStats();
-            runningTotal2 = currentTurn2.runningTotal;
-          }
+            currentTurn2.compRolls();
+            if (currentTurn2.rollAgain === true) {
+              $("ul#player-two-rolls").append("<li>" + currentTurn2.runningTotal[0] + "</li>");
+              $("ul#player-two-rolls").append("<li>" + currentTurn2.runningTotal[1] + "</li>");
+              currentTurn2.sumArray();
+
+              $("#turn-score-two").text(currentTurn2.sum);
+              playerTwoHand.updateScore(currentTurn2);
+              $("#player2-score").text(playerTwoHand.total);
+              showHide("two");
+              showHide("one");
+
+            } else {
+              $("#turn-score-two").text(currentTurn2.sum);
+              showHide("two");
+              showHide("one");
+            }
+              currentTurn2.resetTurnStats();
+            }
+        }
       });
 
       $("#player-board-one button.hold").click(function(){
@@ -179,7 +177,7 @@ $(document).ready(function(){
         if(playerOneHand.checkWin()){
           $("#player1-score").text(playerOneHand.total);
           alert("You've won!");
-        }else{
+        } else{
           $("#player1-score").text(playerOneHand.total);
           showHide("two");
           showHide("one");
@@ -187,12 +185,11 @@ $(document).ready(function(){
           $("#turn-score-one").empty();
 
           currentTurn1.resetTurnStats();
-          runningTotal1 = currentTurn1.runningTotal;
 
           currentTurn2.compRolls();
           if (currentTurn2.rollAgain === true) {
-            $("ul#player-two-rolls").append("<li>" + runningTotal2[0] + "</li>");
-            $("ul#player-two-rolls").append("<li>" + runningTotal2[1] + "</li>");
+            $("ul#player-two-rolls").append("<li>" + currentTurn2.runningTotal[0] + "</li>");
+            $("ul#player-two-rolls").append("<li>" + currentTurn2.runningTotal[1] + "</li>");
             currentTurn2.sumArray();
 
             $("#turn-score-two").text(currentTurn2.sum);
@@ -205,35 +202,36 @@ $(document).ready(function(){
             showHide("two");
             showHide("one");
           }
-
             currentTurn2.resetTurnStats();
-            runningTotal2 = currentTurn2.runningTotal;
         }
       });
     } else {
       if (newGame.currentPlayer === 1) {
         showHide("two");
-
       } else {
         $("#player-board-one button.roll").hide();
         $("#player-board-one button.hold").hide();
       }
-      $("#player-board-one button.roll").click(function() {
-        currentTurn1.newRoll();
-        if (currentTurn1.rollAgain === true){
-          $("ul#player-one-rolls").append("<li>" + runningTotal1[0] + "</li>");
-          currentTurn1.sumArray();
-          $("#turn-score-one").text(currentTurn1.sum);
-        } else {
-          $("ul#player-one-rolls").append("<li>Bust!</li>");
-          $("#turn-score-one").text("Bust!");
-          showHide("two");
-          showHide("one");
-          $("ul#player-one-rolls").empty();
-          $("#turn-score-one").empty();
 
-          currentTurn1.resetTurnStats();
-          runningTotal1 = currentTurn1.runningTotal;
+      $("#player-board-one button.roll").click(function() {
+        if(currentTurn1.rollAgain === true){
+          currentTurn1.newRoll();
+          if (currentTurn1.rollAgain === true){
+            $("ul#player-one-rolls").append("<li>" + currentTurn1.runningTotal[0] + "</li>");
+            currentTurn1.sumArray();
+            $("#turn-score-one").text(currentTurn1.sum);
+          } else {
+            $("ul#player-one-rolls").append("<li>Bust!</li>");
+            $("#turn-score-one").text("Bust!");
+
+            showHide("two");
+            showHide("one");
+
+            $("ul#player-one-rolls").empty();
+            $("#turn-score-one").empty();
+
+            currentTurn1.resetTurnStats();
+          }
         }
       });
 
@@ -250,27 +248,28 @@ $(document).ready(function(){
           $("#turn-score-one").empty();
 
           currentTurn1.resetTurnStats();
-          runningTotal1 = currentTurn1.runningTotal;
         }
       });
 
       $("#player-board-two button.roll").click(function() {
-        currentTurn2.newRoll();
-        if (currentTurn2.rollAgain === true){
-          $("ul#player-two-rolls").append("<li>" + runningTotal2[0] + "</li>");
-          currentTurn2.sumArray();
-          $("#turn-score-two").text(currentTurn2.sum);
-        } else {
-          $("ul#player-two-rolls").append("<li>Bust!</li>");
-          $("#turn-score-two").text("Bust!");
-          showHide("two");
-          showHide("one");
+        if(currentTurn2.rollAgain === true){
+          currentTurn2.newRoll();
+          if (currentTurn2.rollAgain === true){
+            $("ul#player-two-rolls").append("<li>" + currentTurn2.runningTotal[0] + "</li>");
+            currentTurn2.sumArray();
+            $("#turn-score-two").text(currentTurn2.sum);
+          } else {
+            $("ul#player-two-rolls").append("<li>Bust!</li>");
+            $("#turn-score-two").text("Bust!");
 
-          $("ul#player-two-rolls").empty();
-          $("#turn-score-two").empty();
+            showHide("two");
+            showHide("one");
 
-          currentTurn2.resetTurnStats();
-          runningTotal2 = currentTurn2.runningTotal;
+            $("ul#player-two-rolls").empty();
+            $("#turn-score-two").empty();
+
+            currentTurn2.resetTurnStats();
+          }
         }
       });
 
@@ -281,6 +280,7 @@ $(document).ready(function(){
           alert("You've won!");
         } else{
           $("#player2-score").text(playerTwoHand.total);
+
           showHide("two");
           showHide("one");
 
@@ -288,7 +288,6 @@ $(document).ready(function(){
           $("#turn-score-two").empty();
 
           currentTurn2.resetTurnStats();
-          runningTotal2 = currentTurn2.runningTotal;
         }
       });
     }
