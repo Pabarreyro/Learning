@@ -14,8 +14,9 @@ function Hand() {
   this.total = 0;
 };
 
-function Game() {
+function Game(mode) {
   this.currentPlayer = Math.floor((Math.random() * 2) + 1);
+  this.mode = mode;
 };
 
 Turn.prototype.newRoll = function() {
@@ -83,28 +84,23 @@ function showHide(number){
 }
 
 $(document).ready(function(){
-  var mode = "";
   $("#mode-selection button").click(function(){
 
     $("#mode-selection").hide();
-    mode = this.textContent;
+    var newGame = new Game(this.textContent);
     //put conditional logic for setting up vs computer
 
     $("#game-board").toggleClass('hide');
     $("#game-board").attr('display', 'flex');
     $("#game-board").attr('flex-direction', 'row');
 
-    var newGame = new Game();
-
     var playerOneHand = new Hand();
     var playerTwoHand = new Hand();
 
     var currentTurn1 = new Turn();
-    var turnScore1 = 0;
     var runningTotal1 = currentTurn1.runningTotal;
 
     var currentTurn2 = new Turn();
-    var turnScore2 = 0;
     var runningTotal2 = currentTurn2.runningTotal;
 
     if (mode === "Single") {
@@ -114,15 +110,15 @@ $(document).ready(function(){
       } else {
         showHide("one");
 
-        currentTurn2.compRoll();
+        currentTurn2.compRolls();
         if (currentTurn2.rollAgain === true) {
           $("ul#player-two-rolls").append("<li>" + runningTotal2[0] + "</li>");
           $("ul#player-two-rolls").append("<li>" + runningTotal2[1] + "</li>");
 
-          turnScore2 = currentTurn2.sumArray();
-          $("#turn-score-two").text(turnScore2);
+          currentTurn2.sumArray();
+          $("#turn-score-two").text(currentTurn2.sum);
 
-          playerTwoHand.updateScore(turnScore2);
+          playerTwoHand.updateScore(currentTurn2);
           $("#player2-score").text(playerTwoHand.total);
           showHide("two");
           showHide("one");
@@ -138,11 +134,11 @@ $(document).ready(function(){
 
       $("#player-board-one button.roll").click(function() {
         $("ul#player-two-rolls").empty();
-        currentTurn1.playerRoll();
+        currentTurn1.newRoll();
         if (currentTurn1.rollAgain === true){
           $("ul#player-one-rolls").append("<li>" + runningTotal1[0] + "</li>");
-          turnScore1 = currentTurn1.sumArray();
-          $("#turn-score-one").text(turnScore1);
+          currentTurn1.sumArray();
+          $("#turn-score-one").text(currentTurn1.sum);
         } else {
           $("ul#player-one-rolls").append("<li>Bust!</li>");
           $("#turn-score-one").text("Bust!");
@@ -154,20 +150,20 @@ $(document).ready(function(){
           currentTurn1.resetTurnStats();
           runningTotal1 = currentTurn1.runningTotal;
 
-          currentTurn2.compRoll();
+          currentTurn2.compRolls();
           if (currentTurn2.rollAgain === true) {
             $("ul#player-two-rolls").append("<li>" + runningTotal2[0] + "</li>");
             $("ul#player-two-rolls").append("<li>" + runningTotal2[1] + "</li>");
-            turnScore2 = currentTurn2.sumArray();
+            currentTurn2.sumArray();
 
-            $("#turn-score-two").text(turnScore2);
-            playerTwoHand.updateScore(turnScore2);
+            $("#turn-score-two").text(currentTurn2.sum);
+            playerTwoHand.updateScore(currentTurn2);
             $("#player2-score").text(playerTwoHand.total);
             showHide("two");
             showHide("one");
 
           } else {
-            $("#turn-score-two").text(turnScore2);
+            $("#turn-score-two").text(currentTurn2.sum);
             showHide("two");
             showHide("one");
 
@@ -179,7 +175,7 @@ $(document).ready(function(){
       });
 
       $("#player-board-one button.hold").click(function(){
-        playerOneHand.updateScore(turnScore1);
+        playerOneHand.updateScore(currentTurn1);
         if(playerOneHand.checkWin()){
           $("#player1-score").text(playerOneHand.total);
           alert("You've won!");
@@ -193,14 +189,14 @@ $(document).ready(function(){
           currentTurn1.resetTurnStats();
           runningTotal1 = currentTurn1.runningTotal;
 
-          currentTurn2.compRoll();
+          currentTurn2.compRolls();
           if (currentTurn2.rollAgain === true) {
             $("ul#player-two-rolls").append("<li>" + runningTotal2[0] + "</li>");
             $("ul#player-two-rolls").append("<li>" + runningTotal2[1] + "</li>");
-            turnScore2 = currentTurn2.sumArray();
+            currentTurn2.sumArray();
 
-            $("#turn-score-two").text(turnScore2);
-            playerTwoHand.updateScore(turnScore2);
+            $("#turn-score-two").text(currentTurn2.sum);
+            playerTwoHand.updateScore(currentTurn2);
             $("#player2-score").text(playerTwoHand.total);
             showHide("two");
             showHide("one");
@@ -223,11 +219,11 @@ $(document).ready(function(){
         $("#player-board-one button.hold").hide();
       }
       $("#player-board-one button.roll").click(function() {
-        currentTurn1.playerRoll();
+        currentTurn1.newRoll();
         if (currentTurn1.rollAgain === true){
           $("ul#player-one-rolls").append("<li>" + runningTotal1[0] + "</li>");
-          turnScore1 = currentTurn1.sumArray();
-          $("#turn-score-one").text(turnScore1);
+          currentTurn1.sumArray();
+          $("#turn-score-one").text(currentTurn1.sum);
         } else {
           $("ul#player-one-rolls").append("<li>Bust!</li>");
           $("#turn-score-one").text("Bust!");
@@ -242,7 +238,7 @@ $(document).ready(function(){
       });
 
       $("#player-board-one button.hold").click(function(){
-        playerOneHand.updateScore(turnScore1);
+        playerOneHand.updateScore(currentTurn1);
         if(playerOneHand.checkWin()){
           $("#player1-score").text(playerOneHand.total);
           alert("You've won!");
@@ -259,11 +255,11 @@ $(document).ready(function(){
       });
 
       $("#player-board-two button.roll").click(function() {
-        currentTurn2.playerRoll();
+        currentTurn2.newRoll();
         if (currentTurn2.rollAgain === true){
           $("ul#player-two-rolls").append("<li>" + runningTotal2[0] + "</li>");
-          turnScore2 = currentTurn2.sumArray();
-          $("#turn-score-two").text(turnScore2);
+          currentTurn2.sumArray();
+          $("#turn-score-two").text(currentTurn2.sum);
         } else {
           $("ul#player-two-rolls").append("<li>Bust!</li>");
           $("#turn-score-two").text("Bust!");
@@ -279,7 +275,7 @@ $(document).ready(function(){
       });
 
       $("#player-board-two button.hold").click(function(){
-        playerTwoHand.updateScore(turnScore2);
+        playerTwoHand.updateScore(currentTurn2);
         if(playerTwoHand.checkWin()){
           $("#player2-score").text(playerTwoHand.total);
           alert("You've won!");
