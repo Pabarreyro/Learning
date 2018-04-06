@@ -46,5 +46,5 @@ function cryptoSquare(string) {
    setGrid(justLetters);
    splitString(justLetters);
    splitStringArray(stringArray);
-   pushLettersToOutput()
+   pushLettersToOutput(stringArraySplit);
 }
