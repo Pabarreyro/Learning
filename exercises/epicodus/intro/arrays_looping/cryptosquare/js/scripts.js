@@ -47,4 +47,5 @@ function cryptoSquare(string) {
    splitString(justLetters);
    splitStringArray(stringArray);
    pushLettersToOutput(stringArraySplit);
+   console.log(outputArray);
 }
