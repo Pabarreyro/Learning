@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Triangle Checker</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Triangle Checker</h1>
+      <form id="check">
+        <div class="form-group">
+          <label for="sideA">Length A</label>
+          <input class="form-control" type="number" id="sideA" required>
+        </div>
+        <div class="form-group">
+          <label for="sideB">Length B</label>
+          <input class="form-control" type="number" id="sideB" required>
+        </div>
+        <div class="form-group">
+          <label for="sideC">Length C</label>
+          <input class="form-control" type="number" id="sideC" required>
+        </div>
+        <button type="submit" class="btn btn-secondary">Check</button>
+      </form>
+      <div class="jumbotron">
+        <h1>Your triangle is a: <span id="triangletype"></span></h1>
+      </div>
+    </div>
+  </body>
+</html>
