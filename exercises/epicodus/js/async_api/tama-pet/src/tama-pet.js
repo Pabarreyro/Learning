@@ -3,12 +3,14 @@ let pet = {
   tummy: 10,
   dirty: 0,
   sleep: false,
+  health: 20,
+  age: 0,
   hunger: function(){
     const hungerInterval = setInterval(()=> {
       this.tummy--;
-      if (this.tummy == 0) {
+      this.health--;
+      if (this.petCemetery() === true) {
         clearInterval(hungerInterval);
-        return "Why did you kill me daddy?";
       }
     }, 1000)
   },
@@ -26,20 +28,28 @@ let pet = {
       return false;
     }
   },
-  sleep: function() {
-    if(this.date.getHours() > 19 && this.date.getHours() < 9) {
+  bedtime: function() {
+    if(this.date.getHours() > 19 || this.date.getHours() < 9) {
       this.sleep = true;
     }
   },
   pooper: function(){
     const poopInterval = setInterval(()=> {
       this.dirty++;
-      if (this.dirty > 5) {
+      this.health--;
+      if (this.petCemetery === true) {
         clearInterval(poopInterval);
-        return "Why did you kill me daddy?";
       }
-    }, 20000)
-  }
+    }, 4000)
+  },
+  birthday: function() {
+    const ageInterval = setInterval(()=> {
+      this.age++;
+      if(this.petCemetery() === true) {
+        clearInterval(ageInterval);
+      }
+    }, 60000)
+  },
 };
 
 export { pet }
