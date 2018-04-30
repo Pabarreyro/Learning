@@ -1,0 +1,23 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 20rem;
+  background-image: url('https://www.shape.com/sites/shape.com/files/u896/wide-middle-eastern-food.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 0;
+}
+
+.title{
+  color: white;
+  width: 15rem;
+  margin: auto auto;
+  border-radius: 5px;
+  background-color: rgba(226,2,71,0.85);
+}
+
+.title h1{
+  margin-top: auto;
+}

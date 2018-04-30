@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'recipe-box',
+  templateUrl: './recipe-box.component.html',
+  styleUrls: ['./recipe-box.component.css']
+})
+export class RecipeBoxComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
