@@ -1,0 +1,17 @@
+<button class="btn btn-primary block-btn" id="new-task-button" (click)="addTask()">Add Task</button>
+<div *ngIf="newTask === true" id="new-task-form">
+  <h1>New Task</h1>
+  <div class="form-group">
+    <label>Enter Task Description:</label>
+    <input class="form-control" #newDescription>
+  </div>
+  <div class="form-group">
+    <label>Task Priority:</label>
+    <select #newPriority class="form-control">
+      <option [value]="1"> Low Priority </option>
+      <option [value]="2"> Medium Priority </option>
+      <option [value]="3"> High Priority </option>
+    </select>
+  </div>
+  <button class="btn btn-secondary" (click)="submitForm(newDescription.value, newPriority.value); newDescription.value=''; addTask()">Add</button>
+</div>

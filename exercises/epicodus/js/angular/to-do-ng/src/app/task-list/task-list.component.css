@@ -1,0 +1,29 @@
+#task-list-menu {
+  margin-left: 5rem;
+}
+
+#task-list {
+  margin: 1rem;
+}
+
+#task-list li{
+  border-radius: 5px;
+  margin: .5rem auto;
+  padding: .25rem;
+  text-align: right;
+  list-style: none;
+}
+
+#task-list span {
+  margin-top: .25rem;
+}
+
+#task-list span, input, button{
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+
+
+#task-description {
+  float: left;
+}
