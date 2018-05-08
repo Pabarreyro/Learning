@@ -1,12 +1,28 @@
-<h2>Marketplace</h2>
+<h2>In Stock</h2>
+<div class="row filter my-2" *ngIf="currentRoute === '/marketplace'">
+  <div class="col-md-4">
+    <select class="form-control" id="price-filter" (change)="onChange($event.target.value)">
+      <option value="" disabled hidden>Filter by Price</option>
+      <option value="all">All</option>
+      <option value="pricey">$50+</option>
+      <option value="midrange">$20-50</option>
+      <option value="cheap">&#60;$20</option>
+    </select>
+  </div>
+</div>
 
 <div *ngFor="let album of albums | async" class="card card-default">
   <div class="card-body">
-    <h3 (click)="goToDetailPage(album)"><em>{{album.title}}</em> by {{album.artist}}</h3>
+    <div class="row">
+      <h3 class="col-10"(click)="goToDetailPage(album)"><em>{{album.title}}</em> by {{album.artist}}</h3><h4 class="col-2">${{album.price}}</h4>
+    </div>
     <div *ngIf="currentRoute === '/admin'">
-      {{album.description}}
-      <hr>
-      <app-edit-album [selectedAlbum]="album"></app-edit-album>
+      {{album.description}}<br>
+      <button class="btn btn-success" (click)="displayEdit(album)">Edit</button>
+      <div *ngIf="shownAlbum === album && showEdit === true">
+        <hr>
+        <app-edit-album [selectedAlbum]="album" (clickSender)="clearDisplay()"></app-edit-album>
+      </div>
     </div>
   </div>
 </div>

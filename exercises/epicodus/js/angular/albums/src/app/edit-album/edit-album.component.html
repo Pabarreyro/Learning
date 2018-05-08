@@ -11,6 +11,10 @@
 <label>New Album Description:</label>
 <input [(ngModel)]="selectedAlbum.description">
 
-<button (click)="beginUpdatingAlbum(selectedAlbum)">Update</button>
+<label>New Album price:</label>
+<input [(ngModel)]="selectedAlbum.price">
+
+<button class="btn btn-info" (click)="beginUpdatingAlbum(selectedAlbum)">Update</button>
 <hr>
-<button (click)="beginDeletingAlbum(selectedAlbum)">Delete</button>
+<button class="btn btn-danger" (click)="beginDeletingAlbum(selectedAlbum)">Delete</button>
+<button class="btn btn-secondary" (click)="hideEdit()">Clear</button>

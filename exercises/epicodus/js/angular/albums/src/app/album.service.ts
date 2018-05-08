@@ -18,6 +18,16 @@ export class AlbumService {
     return this.albums;
   }
 
+  getFilteredAlbums(startNum: number, endNum: number) {
+    return this.albums = this.database.list('albums', {
+      query: {
+        orderByChild: 'price',
+        startAt: startNum,
+        endAt: endNum
+      }
+    });
+  }
+
   addAlbum(newAlbum: Album) {
     this.albums.push(newAlbum);
   }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { AlbumService } from '../album.service';
 import { Album } from '../album.model';
 
@@ -11,6 +11,7 @@ import { Album } from '../album.model';
 })
 export class EditAlbumComponent implements OnInit {
   @Input() selectedAlbum;
+  @Output() clickSender = new EventEmitter();
 
   constructor(private albumService: AlbumService) { }
 
@@ -19,12 +20,17 @@ export class EditAlbumComponent implements OnInit {
 
   beginUpdatingAlbum(albumToUpdate) {
     this.albumService.updateAlbum(albumToUpdate);
+
   }
 
   beginDeletingAlbum(albumToDelete) {
     if(confirm("Are you sure you want to delete this item from the inventory?")){
       this.albumService.deleteAlbum(albumToDelete);
     }
+  }
+
+  hideEdit() {
+    this.clickSender.emit();
   }
 
 }
