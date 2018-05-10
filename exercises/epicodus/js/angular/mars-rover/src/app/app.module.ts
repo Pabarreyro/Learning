@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { masterConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -13,6 +14,11 @@ import { PhotosListComponent } from './photos-list/photos-list.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { UserPhotosListComponent } from './user-photos-list/user-photos-list.component';
+import { PublicComponent } from './public/public.component';
+import { PrivateComponent } from './private/private.component';
+
+import { AuthGard } from './auth-guard.service';
+import { AuthenticationService } from './authentication/authentication.service';
 
 export const firebaseConfig = {
   apiKey: masterConfig.apiKey,
@@ -26,7 +32,9 @@ export const firebaseConfig = {
     AppComponent,
     RoverFormComponent,
     PhotosListComponent,
-    UserPhotosListComponent
+    UserPhotosListComponent,
+    PublicComponent,
+    PrivateComponent
   ],
   imports: [
     HttpModule,
@@ -35,9 +43,10 @@ export const firebaseConfig = {
     NgbModule.forRoot(),
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthGard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
