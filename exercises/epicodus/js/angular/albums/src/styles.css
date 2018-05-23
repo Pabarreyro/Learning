@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
+=======
+main {
+  margin-bottom: 5rem ;
+}
+>>>>>>> 48de9a7f1828967fb7ea17ee0cd76ad5306ca5f9
 .footer {
   position: fixed;
   bottom: 0;

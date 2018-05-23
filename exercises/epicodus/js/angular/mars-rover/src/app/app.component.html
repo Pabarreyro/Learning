@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expan-md navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="">Authentication Example</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right text-light">
+      <li *ngIf="isLoggedIn">
+        <a (click)="logout()">Log out</a>
+      </li>
+      <li *ngIf ="!isLoggedIn">
+        <a (click)="login()">Log in</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container-fluid" *ngIf="isLoggedIn">
+  <h1>Welcome to {{title}}, {{userName}}!</h1>
+  <router-outlet></router-outlet>
+</main>
+
+<main *ngIf="!isLoggedIn" class="container-fluid">
+  <h4>please create an account</h4>
+</main>

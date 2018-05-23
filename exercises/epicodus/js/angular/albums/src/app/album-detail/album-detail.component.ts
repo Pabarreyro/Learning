@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { AlbumService } from '../album.service';
 import { Location } from '@angular/common';
 import { Album } from '../album.model';
+<<<<<<< HEAD
 import { AlbumService } from '../album.service';
+=======
+>>>>>>> 48de9a7f1828967fb7ea17ee0cd76ad5306ca5f9
 import { FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({

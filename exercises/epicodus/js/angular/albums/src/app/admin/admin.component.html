@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div class="card panel-default">
+=======
+<div class="card card-default">
+>>>>>>> 48de9a7f1828967fb7ea17ee0cd76ad5306ca5f9
   <div class="card-heading">
     <h3 class="card-title">Add New Album to Inventory</h3>
   </div>
@@ -7,21 +11,48 @@
       <div>
         <label>Album Title:</label>
         <br>
+<<<<<<< HEAD
         <input class="form-control"  #newTitle>
+=======
+        <input #newTitle>
+>>>>>>> 48de9a7f1828967fb7ea17ee0cd76ad5306ca5f9
       </div>
 
       <div>
         <label>Album Artist:</label>
         <br>
+<<<<<<< HEAD
         <input class="form-control" #newArtist>
+=======
+        <input #newArtist>
+>>>>>>> 48de9a7f1828967fb7ea17ee0cd76ad5306ca5f9
       </div>
 
       <div>
         <label>Album Description:</label>
         <br>
+<<<<<<< HEAD
         <textarea class="form-control" #newDescription></textarea>
       </div>
       <button class="btn btn-primary" (click)="submitForm(newTitle.value, newArtist.value, newDescription.value); newTitle.value=''; newArtist.value=''; newDescription.value=''">Add</button>
     </div>
   </div>
 </div>
+=======
+        <textarea #newDescription></textarea>
+      </div>
+
+      <div>
+        <label>Album Price:</label>
+        <br>
+        <input type="number" #newPrice>
+      </div>
+      <button (click)="submitForm(newTitle.value, newArtist.value, newDescription.value, newPrice.value); newTitle.value=''; newArtist.value=''; newDescription.value=''; newPrice.value=''">Add</button>
+    </div>
+  </div>
+</div>
+
+<div>
+  <app-marketplace></app-marketplace>
+</div>
+>>>>>>> 48de9a7f1828967fb7ea17ee0cd76ad5306ca5f9
