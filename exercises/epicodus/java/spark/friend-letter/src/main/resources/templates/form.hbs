@@ -1,0 +1,21 @@
+{{#partial "title"}}
+    Create a Custom Greeting!
+{{/partial}}
+
+<!--form.hbs-->
+{{#partial "content"}}
+<h1>Fill in your name and your friend's name to create your custom greeting!</h1>
+<form action='/greeting_card'>
+    <div class="form-group">
+        <label for="sender">Your Name</label>
+        <input type="text" name="sender" id="sender" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="recipient">Their Name</label>
+        <input type="text" name="recipient" id="recipient" class="form-control">
+    </div>
+    <button type="submit" class="btn">Send</button>
+</form>
+{{/partial}}
+
+{{> layout.hbs}}

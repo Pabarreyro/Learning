@@ -1,0 +1,15 @@
+{{#partial "content"}}
+    <p>Description:</p>
+    <p>{{post.content}}</p>
+    <p>Created At:</p>
+    <p>{{post.createdAt}}</p>
+    <p>Post status:</p>
+    <p>
+        {{#if  post.published}}
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Published
+        {{else}}
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Draft
+        {{/if}}
+    </p>
+
+{{/partial}}
