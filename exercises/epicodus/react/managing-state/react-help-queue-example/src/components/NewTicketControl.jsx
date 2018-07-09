@@ -1,14 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import ConfirmationQuestions from './ConfirmationQuestions';
 import NewTicketForm from './NewTicketForm';
+import PropTypes from 'prop-types';
 
 class NewTicketControl extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {formVisibleOnPage: false};
+    this.state = {
+      formVisibleOnPage: false
+    };
     this.handleTroubleshootingConfirmation = this.handleTroubleshootingConfirmation.bind(this);
   }
 
@@ -16,12 +17,12 @@ class NewTicketControl extends React.Component {
     this.setState({formVisibleOnPage: true});
   }
 
-  render() {
+  render(){
     let currentlyVisibleContent = null;
-    if (this.state.formVisibleOnPage) {
+    if (this.state.formVisibleOnPage){
       currentlyVisibleContent = <NewTicketForm onNewTicketCreation={this.props.onNewTicketCreation}/>;
     } else {
-      currentlyVisibleContent = <ConfirmationQuestions onTroubleshootingConfirmation = {this.handleTroubleshootingConfirmation}/>;
+      currentlyVisibleContent = <ConfirmationQuestions onTroubleshootingConfirmation={this.handleTroubleshootingConfirmation}/>;
     }
     return (
       <div>

@@ -1,7 +1,6 @@
-const { resolve } = require('path');
 const webpack = require('webpack');
+const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 
 module.exports = {
 
@@ -9,7 +8,7 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    resolve(__dirname, "src") + "/index.jsx"
+    resolve(__dirname, "src", "index.jsx")
   ],
 
   output: {
@@ -19,7 +18,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [ '.js', '.jsx' ]
+    extensions: ['.js', '.jsx']
   },
 
   devtool: '#source-map',
@@ -32,19 +31,6 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-            },
-          },
-        ],
-      },
       {
         test: /\.jsx?$/,
         enforce: "pre",
@@ -68,9 +54,10 @@ module.exports = {
             "react-hot-loader/babel"
           ]
         }
-      },
+      }
     ],
   },
+
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
