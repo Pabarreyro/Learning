@@ -7,5 +7,5 @@ module.exports = app => {
     .get(handlers.about);
 
   app.route('/distance/:zipcode1/:zipcode2')
-    .get(handlers.get_distance);
+    .get(handlers.getDistance);
 };
