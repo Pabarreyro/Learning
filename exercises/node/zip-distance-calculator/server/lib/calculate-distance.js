@@ -12,7 +12,7 @@ const zipCodeURL = (zip1, zip2) => `${zipcodeBase}${apiKey}/distance.json/${zip1
 const calculateDistance = (req, res, next) => {
   request(
     zipCodeURL(req.params.zipcode1, req.params.zipcode2),
-    (error, distance, body) => {
+    (error, response, body) => {
       if (!error && response.statusCode == 200) {
         response = JSON.parse(body);
         res.send(response);
