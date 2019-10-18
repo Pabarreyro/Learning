@@ -2,7 +2,10 @@
 
 const app = require('express')();
 const bodyParser = require('body-parser');
-const {getUsers} = require('./handlers');
+const {
+  getUsers,
+  getUserById
+} = require('./handlers');
 
 const port = 3000;
 
@@ -19,6 +22,9 @@ app.route('/')
 
 app.route('/users')
   .get(getUsers);
+
+app.route('/users/:id')
+  .get(getUserById);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
