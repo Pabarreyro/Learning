@@ -3,7 +3,7 @@
 const db = require('../db');
 const {selectUserById} = require('../db/queries');
 
-const getUsers = (req, res, next) => {
+const getUserById = (req, res, next) => {
   const userId = parseInt(req.params.id);
 
   db.query(selectUserById, [userId], (err, data) => {
@@ -15,4 +15,4 @@ const getUsers = (req, res, next) => {
   });
 };
 
-module.exports = getUsers;
+module.exports = getUserById;
