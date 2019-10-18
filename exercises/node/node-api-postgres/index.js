@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const {
   createUser,
   getUsers,
-  getUserById
+  getUserById,
+  updateUser
 } = require('./handlers');
 
 const port = 3000;
@@ -23,10 +24,11 @@ app.route('/')
 
 app.route('/users')
   .get(getUsers)
-  .post(createUser);
+  .post(createUser); // curl --data "name={name}&email={email}" http://localhost:3000/users | json_pp
 
 app.route('/users/:id')
-  .get(getUserById);
+  .get(getUserById)
+  .put(updateUser); // curl -X PUT -d "name={name}" -d "email={email}" http://localhost:3000/users/{id} | json_pp
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
