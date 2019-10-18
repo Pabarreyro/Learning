@@ -2,7 +2,7 @@
 
 const insertUser = require('./insert-user');
 const selectAllUsers = require('./select-all-users');
-const selectUserById = require('./select-all-user-by-id');
+const selectUserById = require('./select-user-by-id');
 
 module.exports = {
   insertUser,
