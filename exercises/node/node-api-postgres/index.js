@@ -3,6 +3,7 @@
 const app = require('express')();
 const bodyParser = require('body-parser');
 const {
+  createUser,
   getUsers,
   getUserById
 } = require('./handlers');
@@ -21,7 +22,8 @@ app.route('/')
   });
 
 app.route('/users')
-  .get(getUsers);
+  .get(getUsers)
+  .post(createUser);
 
 app.route('/users/:id')
   .get(getUserById);
