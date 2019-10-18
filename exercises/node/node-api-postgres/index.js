@@ -6,6 +6,7 @@ const {
   createUser,
   getUsers,
   getUserById,
+  removeUser,
   updateUser
 } = require('./handlers');
 
@@ -28,7 +29,8 @@ app.route('/users')
 
 app.route('/users/:id')
   .get(getUserById)
-  .put(updateUser); // curl -X PUT -d "name={name}" -d "email={email}" http://localhost:3000/users/{id} | json_pp
+  .put(updateUser) // curl -X PUT -d "name={name}" -d "email={email}" http://localhost:3000/users/{id} | json_pp
+  .delete(removeUser); 
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
