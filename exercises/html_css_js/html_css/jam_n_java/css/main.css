@@ -2,6 +2,11 @@
 
 /* Set up variables */
 :root {
+  --sageBrush: #3A4D1B;
+  --eggCreme: #FCD5A8;
+  --burntChocolate: #171112;
+  --mocha: #987456;
+  --coffeeCherry: #D1001D;
   --brightYellow:#E3B505;
   --darkBrown:#BB9457;
   --yellow:rgb(242, 180, 80); 
