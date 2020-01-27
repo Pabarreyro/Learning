@@ -114,3 +114,55 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+/* nav button */
+.nav_btn {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  font-size: 2.5rem;
+  color: var(--eggCreme);
+  cursor: pointer;
+  animation: pulse 1.5s 2;
+  
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* nav menu */
+.nav_menu {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 10rem;
+  padding-top: 5rem;
+  background: rgba(252,213,168,0.85);
+  z-index: 3;
+}
+.nav-links {
+  list-style-type: none;
+}
+.nav_link {
+  display: block;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: var(--sageBrush);
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.5s ease-in-out;
+}
+.nav_link:hover {
+  background: var(--mocha);
+  color: rgba(252,213,168,0.85);
+  padding-left: 1.5rem;
+}
