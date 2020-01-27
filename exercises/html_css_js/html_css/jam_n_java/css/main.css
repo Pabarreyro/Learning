@@ -108,11 +108,46 @@ body {
   height: 100%;
   z-index: -1;
 }
-
 .video_item {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* video switch */
+.video_switch-container {
+  display: none;
+}
+@media screen and (min-width:768px) {
+  .video_switch-container {
+    display: block;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    z-index: 3;
+  }
+  .video_switch {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    width: 5rem;
+    background: var(--eggCreme);
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  .video_switch-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    border-radius: 0.5rem;
+    background: var(--mocha);
+  }
+  .video_switch-icon {
+    color: var(--mocha);
+  }
 }
 
 /* nav button */
@@ -140,6 +175,7 @@ body {
 
 /* nav menu */
 .nav_menu {
+  display: none;
   position: fixed;
   height: 100%;
   top: 0;
