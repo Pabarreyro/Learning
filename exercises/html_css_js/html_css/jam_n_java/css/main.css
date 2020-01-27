@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|La+Belle+Aurore|Open+Sans&display=swap');
+
+/* Font families
+ * 'La Belle Aurore', cursive;
+ * 'Abril Fatface', cursive;
+ * 'Open Sans', sans-serif;
+*/
 
 /* Set up variables */
 :root {
@@ -19,4 +25,81 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', cursive;
+  background: linear-gradient(rgba(255,255,255,0.75),rgba(255,255,255,0.75)),url('../public/img/bodyBcg.jpeg');
+  color: var(--black);
+}
+
+/* global styles */
+.bell-fonts {
+  font-family: 'La Belle Aurore', cursive;
+}
+
+.abril-fonts {
+  font-family: 'Abril Fatface', cursive;
+}
+
+/* header */
+.header {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 80%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+@media screen and (max-width:768px) {
+  .header {
+    background: url('../public/img/headerBcg.jpeg')center/cover fixed no-repeat;
+    /* background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position:fixed; */
+  }
+}
+
+/* banner */
+.banner {
+  text-align: center;
+  z-index: 3;
+}
+
+.banner_title {
+  font-size: 4rem;
+  text-transform: capitalize;
+  color: var(--burntChocolate)
+}
+
+@media screen and (min-width:768px) {
+  .banner_title {
+    font-size: 9rem;
+  }
+}
+
+.banner_icons {
+  display: grid;
+  grid-template-columns: repeat(4, 2rem);
+  grid-column-gap: 0.5rem;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.banner_social-icon {
+  display: block;
+  text-decoration: none;
+  color: var(--burntChocolate);
+  border: 0.1rem solid var(--burntChocolate);
+  border-radius: 50%;
+  padding: 0.25rem;
+  transform: all 0.5s linear;
+}
+
+.banner_social-icon:hover{
+  background: var(--eggCreme);
+  color: var(--coffeeCherry);
 }
