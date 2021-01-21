@@ -1,0 +1,14 @@
+{
+  "name": "refresher",
+  "version": "1.0.0",
+  "description": "Node.js server utilizing graphQL",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^15.4.0"
+  }
+}
